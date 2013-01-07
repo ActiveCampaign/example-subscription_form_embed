@@ -52,8 +52,8 @@ A sync does not require a subscriber ID, and will automatically add or edit, dep
 
 ## Documentation and Links
 
-* [Full API documentation](http://activecampaign.com/api).
-* [Blog post: Advanced Subscription Form Integration](http://www.activecampaign.com/blog/advanced-subscription-form-integration/).
+* [Full API documentation](http://activecampaign.com/api)
+* [Blog post: Advanced Subscription Form Integration](http://www.activecampaign.com/blog/advanced-subscription-form-integration/)
 
 ## Reporting Issues
 
