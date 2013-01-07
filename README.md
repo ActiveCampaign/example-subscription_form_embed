@@ -6,7 +6,7 @@ ActiveCampaign Subscription Form API Script: Embed and customize your forms on a
 2. jQuery (if using the Ajax option)
 3. Familiarity working with PHP code
 
-## Installation
+## Installation and Usage
 
 You can install **example-subscription_form_embed** by downloading (or cloning) the source.
 
@@ -49,3 +49,11 @@ $sync = 0;
 </pre>
 
 A sync does not require a subscriber ID, and will automatically add or edit, depending if they exist already. [Learn more](http://www.activecampaign.com/blog/sync-subscribers-with-our-api/).
+
+## Full Documentation
+
+[Click here to view our full API documentation](http://activecampaign.com/api).
+
+## Reporting Issues
+
+We'd love to help if you have questions or problems. Report issues using the [Github Issue Tracker](https://github.com/ActiveCampaign/example-subscription_form_embed/issues) or email help@activecampaign.com.
