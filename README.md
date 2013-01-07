@@ -50,9 +50,10 @@ $sync = 0;
 
 A sync does not require a subscriber ID, and will automatically add or edit, depending if they exist already. [Learn more](http://www.activecampaign.com/blog/sync-subscribers-with-our-api/).
 
-## Full Documentation
+## Documentation and Links
 
-[Click here to view our full API documentation](http://activecampaign.com/api).
+* [Full API documentation](http://activecampaign.com/api).
+* [Blog post: Advanced Subscription Form Integration](http://www.activecampaign.com/blog/advanced-subscription-form-integration/).
 
 ## Reporting Issues
 
