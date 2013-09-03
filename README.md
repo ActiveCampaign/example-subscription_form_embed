@@ -48,7 +48,11 @@ Finally, decide whether to perform a sync or standard add/edit:
 $sync = 0;
 </pre>
 
-A sync does not require a subscriber ID, and will automatically add or edit, depending if they exist already. [Learn more](http://www.activecampaign.com/blog/sync-subscribers-with-our-api/).
+A sync does not require a subscriber ID, and will automatically add or edit, depending if they exist already (based on the email address). If you wish to simply perform an ADD (no edit), delete this portion of `Form.class.php`:
+
+![Screenshot of code to remove EDIT portion](1.jpg)
+
+[Learn more about syncing subscribers](http://www.activecampaign.com/blog/sync-subscribers-with-our-api/).
 
 ## Documentation and Links
 
