@@ -3,8 +3,7 @@ ActiveCampaign Subscription Form API Script: Embed and customize your forms on a
 ## Requirements
 
 1. [Our PHP API library](https://github.com/ActiveCampaign/activecampaign-api-php)
-2. jQuery (if using the Ajax option)
-3. Familiarity working with PHP code
+2. jQuery (if using the Ajax option, or loading existing contact details)
 
 ## Installation and Usage
 
