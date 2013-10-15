@@ -53,13 +53,18 @@
 		$contact = $ac->api("contact/view?hash={$hash}");
 //dbg($contact);
 
-		echo "<script>";
-		foreach ($contact->fields as $field) {
-			?>
-			cf[<?php echo $field->id; ?>] = "<?php echo $field->val; ?>";
-			<?php
+		if (!$contact->success) {
+			$contact = null;
 		}
-		echo "</script>";
+		else {
+			echo "<script>";
+			foreach ($contact->fields as $field) {
+				?>
+				cf[<?php echo $field->id; ?>] = "<?php echo $field->val; ?>";
+				<?php
+			}
+			echo "</script>";
+		}
 
 	}
 
