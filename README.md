@@ -52,6 +52,10 @@ A sync does not require a subscriber ID, and will automatically add or edit, dep
 
 ![Screenshot of code to remove EDIT portion](http://d226aj4ao1t61q.cloudfront.net/pitupi0v1_1.jpg)
 
+To load an existing contact's details in your form (name, email, and custom field values), include the **contact hash** in the URL (IE: `index.php?hash=ihfsaduh038d3q...`).
+
+![Screenshot of form filled with existing contact details](http://d226aj4ao1t61q.cloudfront.net/649ca2tr_screenshot2013-10-15at2.00.12pm.jpg)
+
 [Learn more about syncing subscribers](http://www.activecampaign.com/blog/sync-subscribers-with-our-api/).
 
 ## Documentation and Links
