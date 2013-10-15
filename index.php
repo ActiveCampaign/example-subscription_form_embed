@@ -1,7 +1,13 @@
+<script>
+
+	var cf = {}; // custom fields object
+
+</script>
+
 <?php
 
-	define("ACTIVECAMPAIGN_URL", "https://staging-mthommes.api-us1.com");
-	define("ACTIVECAMPAIGN_API_KEY", "3693354bb517da0392bd568c1cdcb2c5b2bd546d1dd1b373f82a7cda9850c04c2d126b9c");
+	define("ACTIVECAMPAIGN_URL", "");
+	define("ACTIVECAMPAIGN_API_KEY", "");
 
 	require_once("../../activecampaign-api-php/includes/ActiveCampaign.class.php");
 	$ac = new ActiveCampaign(ACTIVECAMPAIGN_URL, ACTIVECAMPAIGN_API_KEY);
@@ -41,12 +47,20 @@
 	}
 
 	// check for subscriber visiting this page (to preload their data).
-	$load_contact = false;
+	$contact = null;
 	if (isset($_GET["hash"])) {
-		$load_contact = true;
 		$hash = $_GET["hash"];
 		$contact = $ac->api("contact/view?hash={$hash}");
 //dbg($contact);
+
+		echo "<script>";
+		foreach ($contact->fields as $field) {
+			?>
+			cf[<?php echo $field->id; ?>] = "<?php echo $field->val; ?>";
+			<?php
+		}
+		echo "</script>";
+
 	}
 
 ?>
@@ -94,7 +108,7 @@
 
 	<?php
 	
-		if ($load_contact) {
+		if ($contact) {
 	
 			?>
 
@@ -102,7 +116,17 @@
 
 				$(document).ready(function() {
 
-					//$("#_form_<?php echo $form_embed_params["id"]; ?>")
+					$("#_form_<?php echo $form_embed_params["id"]; ?> input[name=fullname]").val('<?php echo $contact->name; ?>');
+					$("#_form_<?php echo $form_embed_params["id"]; ?> input[name=email]").val('<?php echo $contact->email; ?>');
+
+					// loop through all custom fields in the form.
+					$("#_form_<?php echo $form_embed_params["id"]; ?> *[name^=field]").each(function() {
+						// IE: field[148]. just get the number.
+						var cfid = $(this).attr("name").match(/[0-9]+/);
+						if (typeof(cf[cfid]) != "undefined") {
+							$(this).val(cf[cfid]);
+						}
+					});
 
 				});
 
