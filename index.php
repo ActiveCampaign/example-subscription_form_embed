@@ -1,3 +1,10 @@
+<?php
+
+	$api_url = "";
+	$api_key = "";
+
+?>
+
 <script>
 
 	var cf = {}; // custom fields object
@@ -6,8 +13,8 @@
 
 <?php
 
-	define("ACTIVECAMPAIGN_URL", "");
-	define("ACTIVECAMPAIGN_API_KEY", "");
+	define("ACTIVECAMPAIGN_URL", $api_url);
+	define("ACTIVECAMPAIGN_API_KEY", $api_key);
 
 	require_once("../../activecampaign-api-php/includes/ActiveCampaign.class.php");
 	$ac = new ActiveCampaign(ACTIVECAMPAIGN_URL, ACTIVECAMPAIGN_API_KEY);
