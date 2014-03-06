@@ -20,7 +20,7 @@
 	$ac = new ActiveCampaign(ACTIVECAMPAIGN_URL, ACTIVECAMPAIGN_API_KEY);
 
 	$form_embed_params = array(
-		"id" => 1157,
+		"id" => 1341,
 		"action" => "",
 		"ajax" => 0,
 		"css" => 1,
@@ -46,6 +46,7 @@
 	}
 
 	$form_process = $ac->api("form/process?sync={$sync}");
+//dbg($form_process);
 
 	if ($form_process && (int)$form_embed_params["ajax"]) {
 		// form submitted via ajax
@@ -90,8 +91,12 @@
 
 	</style>
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
+	<script>
+		var $J = jQuery.noConflict();
+	</script>
 
 </head>
 
@@ -126,17 +131,17 @@
 
 			<script>
 
-				$(document).ready(function() {
+				$J(document).ready(function() {
 
-					$("#_form_<?php echo $form_embed_params["id"]; ?> input[name=fullname]").val('<?php echo $contact->name; ?>');
-					$("#_form_<?php echo $form_embed_params["id"]; ?> input[name=email]").val('<?php echo $contact->email; ?>');
+					$J("#_form_<?php echo $form_embed_params["id"]; ?> input[name=fullname]").val('<?php echo $contact->name; ?>');
+					$J("#_form_<?php echo $form_embed_params["id"]; ?> input[name=email]").val('<?php echo $contact->email; ?>');
 
 					// loop through all custom fields in the form.
-					$("#_form_<?php echo $form_embed_params["id"]; ?> *[name^=field]").each(function() {
+					$J("#_form_<?php echo $form_embed_params["id"]; ?> *[name^=field]").each(function() {
 						// IE: field[148]. just get the number.
-						var cfid = $(this).attr("name").match(/[0-9]+/);
+						var cfid = $J(this).attr("name").match(/[0-9]+/);
 						if (typeof(cf[cfid]) != "undefined") {
-							$(this).val(cf[cfid]);
+							$J(this).val(cf[cfid]);
 						}
 					});
 
