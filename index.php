@@ -7,6 +7,7 @@
 
 <script>
 
+	var lists = {};
 	var cf = {}; // custom fields object
 
 </script>
@@ -22,7 +23,7 @@
 	$form_embed_params = array(
 		"id" => 1341,
 		"action" => "",
-		"ajax" => 0,
+		"ajax" => 1,
 		"css" => 1,
 	);
 
@@ -66,6 +67,11 @@
 		}
 		else {
 			echo "<script>";
+			foreach ($contact->lists as $listid => $data) {
+				?>
+				lists[<?php echo $listid; ?>] = <?php echo $data->status; ?>;
+				<?php
+			}
 			foreach ($contact->fields as $field) {
 				?>
 				cf[<?php echo $field->id; ?>] = "<?php echo $field->val; ?>";
@@ -135,6 +141,20 @@
 
 					$J("#_form_<?php echo $form_embed_params["id"]; ?> input[name=fullname]").val('<?php echo $contact->name; ?>');
 					$J("#_form_<?php echo $form_embed_params["id"]; ?> input[name=email]").val('<?php echo $contact->email; ?>');
+
+					// loop through all lists in the form.
+					$J("#_form_<?php echo $form_embed_params["id"]; ?> *[name^=nlbox]").each(function() {
+						var this_listid = $J(this).val();
+						if (typeof(lists[this_listid]) != "undefined") {
+							if (lists[this_listid] == 1) {
+								// if status is 1, check that checkbox.
+								$J(this).attr("checked", "checked");
+							} else {
+								// not active status, so uncheck this checkbox.
+								this.checked = false;
+							}
+						}
+					});
 
 					// loop through all custom fields in the form.
 					$J("#_form_<?php echo $form_embed_params["id"]; ?> *[name^=field]").each(function() {
