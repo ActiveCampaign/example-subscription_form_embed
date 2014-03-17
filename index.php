@@ -145,13 +145,11 @@
 					// loop through all lists in the form.
 					$J("#_form_<?php echo $form_embed_params["id"]; ?> *[name^=nlbox]").each(function() {
 						var this_listid = $J(this).val();
+						this.checked = false;
 						if (typeof(lists[this_listid]) != "undefined") {
 							if (lists[this_listid] == 1) {
 								// if status is 1, check that checkbox.
 								$J(this).attr("checked", "checked");
-							} else {
-								// not active status, so uncheck this checkbox.
-								this.checked = false;
 							}
 						}
 					});
