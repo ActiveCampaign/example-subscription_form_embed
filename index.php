@@ -10,7 +10,7 @@
 	$ac = new ActiveCampaign(ACTIVECAMPAIGN_URL, ACTIVECAMPAIGN_API_KEY);
 
 	$form_embed_params = array(
-		"id" => 1341,
+		"id" => 2788,
 		"action" => "",
 		"ajax" => 1,
 		"css" => 1,
@@ -49,26 +49,6 @@
 	if (isset($_GET["hash"])) {
 		$hash = $_GET["hash"];
 		$contact = $ac->api("contact/view?hash={$hash}");
-//dbg($contact);
-
-		if (!$contact->success) {
-			$contact = null;
-		}
-		else {
-			echo "<script>";
-			foreach ($contact->lists as $listid => $data) {
-				?>
-				lists[<?php echo $listid; ?>] = <?php echo $data->status; ?>;
-				<?php
-			}
-			foreach ($contact->fields as $field) {
-				?>
-				cf[<?php echo $field->id; ?>] = "<?php echo $field->val; ?>";
-				<?php
-			}
-			echo "</script>";
-		}
-
 	}
 
 ?>
@@ -81,6 +61,25 @@
 
 		var lists = {};
 		var cf = {}; // custom fields object
+
+		<?php
+
+			if ($contact) {
+
+				foreach ($contact->lists as $listid => $data) {
+					?>
+					lists[<?php echo $listid; ?>] = <?php echo $data->status; ?>;
+					<?php
+				}
+				foreach ($contact->fields as $field) {
+					?>
+					cf[<?php echo $field->id; ?>] = "<?php echo $field->val; ?>";
+					<?php
+				}
+
+			}
+
+		?>
 
 	</script>
 
