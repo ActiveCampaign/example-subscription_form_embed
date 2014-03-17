@@ -3,17 +3,6 @@
 	$api_url = "";
 	$api_key = "";
 
-?>
-
-<script>
-
-	var lists = {};
-	var cf = {}; // custom fields object
-
-</script>
-
-<?php
-
 	define("ACTIVECAMPAIGN_URL", $api_url);
 	define("ACTIVECAMPAIGN_API_KEY", $api_key);
 
@@ -87,6 +76,13 @@
 <html>
 
 <head>
+
+	<script>
+
+		var lists = {};
+		var cf = {}; // custom fields object
+
+	</script>
 
 	<style type="text/css">
 
