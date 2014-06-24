@@ -10,10 +10,10 @@
 	$ac = new ActiveCampaign(ACTIVECAMPAIGN_URL, ACTIVECAMPAIGN_API_KEY);
 
 	$form_embed_params = array(
-		"id" => 2788,
-		"action" => "",
-		"ajax" => 1,
-		"css" => 1,
+		"id" => 1644, // subscription form ID
+		"action" => "", // custom form action attribute
+		"ajax" => 1, // whether or not to use Ajax to submit the form
+		"css" => 1, // whether or not to retain the CSS
 	);
 
 	// perform sync (or swim? ;)
