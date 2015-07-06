@@ -134,6 +134,8 @@
 
 				$J(document).ready(function() {
 
+					$J("#_form_<?php echo $form_embed_params["id"]; ?> input[name=firstname]").val('<?php echo $contact->first_name; ?>');
+					$J("#_form_<?php echo $form_embed_params["id"]; ?> input[name=lastname]").val('<?php echo $contact->last_name; ?>');
 					$J("#_form_<?php echo $form_embed_params["id"]; ?> input[name=fullname]").val('<?php echo $contact->name; ?>');
 					$J("#_form_<?php echo $form_embed_params["id"]; ?> input[name=email]").val('<?php echo $contact->email; ?>');
 
