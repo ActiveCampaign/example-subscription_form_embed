@@ -1,5 +1,9 @@
 <?php
 
+	if (!session_id()) {
+		session_start();
+	}
+
 	$api_url = "";
 	$api_key = "";
 
@@ -18,7 +22,7 @@
 
 	// perform sync (or swim? ;)
 	// if 0, it does an add/edit
-	$sync = 0;
+	$sync = 1;
 
 	function dbg($var, $continue = 0, $element = "pre") {
 	  echo "<" . $element . ">";
@@ -35,7 +39,10 @@
 		$api_params[] = $var . "=" . $val;
 	}
 
-	$form_process = $ac->api("form/process?sync={$sync}");
+	$form_html = $ac->api("form/embed?" . implode("&", $api_params));
+	$has_captcha = (strpos($form_html, "<input type='text' name='captcha'") !== false) ? 1 : 0;
+
+	$form_process = $ac->api("form/process?sync={$sync}&captcha={$has_captcha}");
 //dbg($form_process);
 
 	if ($form_process && (int)$form_embed_params["ajax"]) {
@@ -119,7 +126,6 @@
 
 	<?php
 
-		$form_html = $ac->api("form/embed?" . implode("&", $api_params));
 		echo $form_html;
 
 	?>
